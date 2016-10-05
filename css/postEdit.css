@@ -1,0 +1,25 @@
+.post_editer .font-design label *{
+border: 2px solid #ffc32d;
+font-size:x-small;
+padding: 3px;
+
+-webkit-border-radius:2000px;
+-moz-border-radius:2000px;
+border-radius:2000px;
+
+-webkit-box-shadow:  1px 1px 1px #AB831E; 
+-moz-box-shadow: 1px 1px 1px #AB831E;
+box-shadow: 1px 1px 1px #AB831E;
+}
+
+.post_editer .font-design input:checked+label *{
+-webkit-box-shadow:  inset 1px 1px 1px #AB831E; 
+-moz-box-shadow: inset 1px 1px 1px #AB831E;
+box-shadow: 1px 1px 1px #AB831E inset;
+}
+
+.post_editer .font-design label:hover *{
+-webkit-box-shadow:  inset 0px 0px 0px #AB831E; 
+-moz-box-shadow: inset 0px 0px 0px #AB831E;
+box-shadow: 0px 0px 0px #AB831E inset;
+}

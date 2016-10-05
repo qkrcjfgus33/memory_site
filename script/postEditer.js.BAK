@@ -1,0 +1,136 @@
+jQuery(function(){
+	alert($("#post_add").closest("#post_list")[0]);
+	alert($("#post_list").closest("#post_add")[0]);
+	var _getSelect = function(content, _edit_post, selection){
+		var content_range = $(content)[0].contentDocument.createRange(),
+			change_ranges = new Array(),//태그에 따라 나눠진 선택 범위 모음(반환값)
+			selection_range = selection.cloneRange();
+
+		var clone_r,clone_s;
+		$(_edit_post).find("*:not(br)").each(function(){
+			clone_r = content_range.cloneRange();
+			clone_r.selectNodeContents(this);
+			//<시작점> ... <*> ... <끝점> ... </*>의 경우
+			if( selection_range.compareBoundaryPoints(0, clone_r)==-1 && selection_range.compareBoundaryPoints(1, clone_r)==1 && selection_range.compareBoundaryPoints(2, clone_r)==-1){
+				
+				clone_s = selection_range.cloneRange();
+				//최종목표 : clone_s = <시작점> ... <끝점><*>...</*>
+				clone_s.setEndBefore(this);
+				change_ranges.push(clone_s.cloneRange());
+				
+				clone_s = selection_range.cloneRange();
+				//최종목표 : clone_s = <*><span>...</span>...</*>
+				clone_s.setStart(this,0);
+				change_ranges.push(clone_s.cloneRange());
+			
+			//<*> ... <시작점> ... </*> ... <끝점>의 경우
+			}else if( selection_range.compareBoundaryPoints(0, clone_r)==1 && selection_range.compareBoundaryPoints(3, clone_r)==-1 && selection_range.compareBoundaryPoints(2, clone_r)==1){
+				
+				clone_s = selection_range.cloneRange();
+				//<*> ... <시작점> ... </*> ... <끝점>
+				//최종목표: clone_s = <*>...</*><시작점> ... <끝점>
+				clone_s.setStartAfter(this);
+				change_ranges.push(clone_s.cloneRange());
+				
+				clone_s = selection_range.cloneRange();
+				//<*> ... <시작점> ... </*> ... <끝점>
+				//최종 목표: <*> ... <시작점>...<끝점></*>
+				clone_s = selection_range.cloneRange();
+				/*끝점 맞추기*/
+				//<*> ... <시작점> ... </*> ... <끝점>
+				var _temp_span  = document.createElement("span");
+				clone_s.insertNode(_temp_span);
+				//<*> ...<시작점><span id="_temp_aoeDf_nos_sfeevcc"></span>... </*>... <끝점>
+				clone_s.selectNodeContents(this);
+				//<*><시작점> ...<span id="_temp_aoeDf_nos_sfeevcc"></span>... <끝점></*>...
+				/*끝점 맞추기 끝. 시작점 맞추기*/
+				clone_s.setStartAfter(_temp_span);
+				//<*> ...<span id="_temp_aoeDf_nos_sfeevcc"></span><시작점>... <끝점></*>...
+				/*시작점 맞추기 끝. 마무리*/
+				$(_temp_span).remove();
+				/*마무리 끝*/
+				change_ranges.push(clone_s.cloneRange());
+			//<시작점> ... <*> ...</*>...<끝점>의 경우 (복잡하게 얽힌경우를위해 안쪽 태그에 적용하는 스타일 태그를 넣어야한다.
+			}else if(selection_range.compareBoundaryPoints(0, clone_r)==-1 && selection_range.compareBoundaryPoints(2, clone_r)==1){
+				clone_s = selection_range.cloneRange();
+				//<시작점> ... <*> ...</*>...<끝점>
+				//최종목표 : clone_s = <시작점> ...<*><시작점> ... <끝점></*> ... <끝점>
+				//<시작점> ... <*> ...</*>...<끝점>
+				change_ranges.push(clone_s.cloneRange());
+
+				clone_s.selectNodeContents(this);
+				//...<*><시작점> ... <끝점></*> ...
+				change_ranges.push(clone_s.cloneRange());
+			}
+		});
+		if(change_ranges.length == 0 )
+			change_ranges.push(selection_range.cloneRange());
+
+		selection_range.detach();
+
+		return change_ranges;
+	}
+	var style_change = function(e,_css_result,tag_name){
+		e.stopPropagation();
+
+		//선택된 텍스트 range객체를 얻는다.
+
+		var content = $(e.target).closest(".post_head").children("ul").children(".post_body").children(".content"),
+			post_selection = $(content)[0].contentWindow.getSelection(),
+			selection_range = post_selection.getRangeAt(0).cloneRange(),
+			_edit_post = $(content).contents().find("#post_content"),
+			change_ranges = _getSelect(content, _edit_post, selection_range);//스타일을 편집할 범위 모음
+
+		if(tag_name==undefined)
+			tag_name = "span";
+		
+		var _key;//,pre_html;
+		//content.blur();
+		for(_key in change_ranges){
+			var span_el = document.createElement(tag_name);//스타일 지정을 위한 span 엘리먼트
+			//pre_html = $(_edit_post).html();
+			//span_el.setAttribute("id","_temp_edit_check");
+			
+			
+			try{
+				change_ranges[_key].surroundContents(span_el);//편집위치(엔터를 친 위치)에 스타일링된 span태그를 넣는다.
+			}catch(e){
+				continue;
+			}finally{
+				change_ranges[_key].detach();
+			}
+
+			//if(tag_name=="span")
+				span_el.setAttribute("style",_css_result);
+			/*else{
+				if($(_edit_post).find("#_temp_edit_check").closest(tag_name+":not(#_temp_edit_check)")[0] != undefined){
+					$(_edit_post).html(pre_html);
+					continue;
+				}
+			}
+
+			//$(_edit_post).find("#_temp_edit_check").children(tag_name).unwrap();
+			span_el.removeAttribute("id");
+			*/
+		}
+
+		
+		//content.focus();
+		//post_selection.addRange(selection_range);
+	}
+
+	//작성중인 게시물 본문 .content 의 높이를 자동 변경하는 이벤트 함수
+	var autoHeight = function(e){
+		$("#temp_content").width($(e.target).width()).
+			html($(e.target).html());
+		$(".post_add .post_body .content").height(parseInt( $("#temp_content").height() )+90);
+	}
+	//iframe의 로드가 끝나고 autoHeight 이벤트함수를 등록한다.
+	$(".post_add .post_body .content").load(function(e){
+		$(this.contentDocument).find("#post_content").keypress(autoHeight).keydown(autoHeight).keyup(autoHeight(e)).
+			select(function(){
+			//$(".post_editer")
+		});
+	});
+
+});

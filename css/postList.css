@@ -1,0 +1,137 @@
+/*post_list_box 배경*/
+.post_list_box:after{
+content:"\00a0";
+display: block;
+position: fixed;
+top: 0px;
+left: 10%;
+width: 70%;
+height: 100%;
+border: 5px solid #ffc32d;
+border-bottom: 0px none;
+background: rgba(255,255,255,.9);
+z-index:-1;
+box-shadow: 1px 0px 5px #ffffff, 
+			-1px 0px 5px #ffffff,
+			0px -1px 5px #ffffff,
+			0px 1px 5px #ffffff,
+			1px 0px 5px #ffffff inset, 
+			-1px 0px 5px #ffffff inset,
+			0px -1px 5px #ffffff inset,
+			0px 1px 5px #ffffff inset;
+}
+
+/*게시물 목록 상자 부분 구조 조정*/
+.post_list_box {
+display: block;
+position: relative;
+top: 0%;
+left: 10%;
+width: 69%;
+height: 100%;
+}
+
+/*게시물 목록 부분 구조 조정*/
+.post_list_box ul {
+position: relative;
+left:2%;
+width:96%;
+padding: 10px;
+}
+.post_list_box li{
+list-style-type:none;
+padding: 10px;
+}
+
+/*처음부분 여유구간 설정*/
+#post_list {
+position: relative;
+top:60px;
+}
+/*마지막부분 여유구간 설정*/
+#post_list>.post_head:last-child{
+margin-bottom: 100px;
+}
+
+/*제목, 내용부분 구조 설정*/
+.post_head{
+border: 2px solid #ffc32d;
+padding: 10px;
+margin: -1px;
+box-shadow: 1px -1px 1px #ffe08e, 
+			1px 1px 1px #ffe08e inset,
+			-1px -1px 1px #ffe08e,
+			-1px 1px 1px #ffe08e inset;
+}
+
+.post_list_box .title *{
+display: inline-block;
+width: 80%;
+font-family:"Malgun Gothic";
+vertical-align: middle;
+}
+.post_list_box .title a{
+overflow-y: auto;
+max-height: 300px;
+}
+
+.post_body{
+margin: 5px 0px;
+border: 1px double #bcbcbc;
+cursor: default;
+}
+.post_body:empty{
+display:none;
+}
+
+/*글쓴이 표시, 댓글수 표시 구조설정 부분*/
+.post_list_box .writer, .post_list_box .reply_num{
+display: inline-block;
+width: 7%;
+overflow-x:hide;
+padding: 0px;
+margin: 0px;
+}
+.post_list_box .writer a{
+box-shadow: 1px 1px 5px #ffc32d,-1px -1px 5px #ffc32d;
+font-size: 70%;
+padding: 2px;
+}
+
+/*post_aside및 time 부분*/
+.post_list_box .post_aside{
+display: inline-block;
+width: 10%;
+text-align: center;
+}
+.post_list_box .time{
+display: inline;
+font-size: 20px;
+color: #e1a400;
+font-family:DigitalFont;
+text-shadow: -1px 0 #ffffff, 0 1px #ffffff, 1px 0 #ffffff, 0 -1px #ffffff;
+			 -moz-text-shadow: -1px 0 #ffbd0f, 0 1px #ffbd0f, 1px 0 #ffbd0f, 0 -1px #ffbd0f;
+			 -webkit-text-shadow: -1px 0 #ffbd0f, 0 1px #ffbd0f, 1px 0 #ffbd0f, 0 -1px #ffbd0f;
+font-weight: 900;
+/*padding: 4px; /*수직정렬을 위해 padding조절*/
+vertical-align: middle;
+}
+
+/*색 효과 부분*/
+.post_list_box .post_head:not(.unopen){
+cursor: pointer;
+}
+.post_list>.post_head:not(.unopen):hover{
+background-color: rgba(225,230,162,0.5);
+}
+.post_list_box .post_body:hover{
+background: rgba(255,255,255,.8);
+}
+/*
+.post_list_box .is_content:not(.open){
+box-shadow: 0px -3px 3px #ffffff inset;
+}
+.post_list_box .is_content:not(.open):hover{
+box-shadow: 0px -3px 3px #ffcb42 inset;
+}
+*/

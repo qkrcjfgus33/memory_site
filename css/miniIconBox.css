@@ -1,0 +1,101 @@
+.mini_icon_box{
+	position: fixed;
+	top:0%;
+	left:79.2%;
+	
+	width:35px;
+	height:100%;
+	margin: 0px;
+	padding: 0px;
+	z-index: 2;
+}
+
+.mini_icon_box input,
+.new_posting_able_icon{
+	
+	padding: 0px;/*버튼 (value)텍스트의 가운데정렬을 위해*/
+	color: #eaa502;
+	text-shadow:1px 0px 1px #ffffff, 
+				-1px 0px 1px #ffffff,
+				0px -1px 1px #ffffff,
+				0px 1px 1px #ffffff,
+				1px 0px 1px #ffffff inset, 
+				-1px 0px 1px #ffffff inset,
+				0px -1px 1px #ffffff inset,
+				0px 1px 1px #ffffff inset;
+	
+	box-shadow: 1px 0px 1px #ffffff, 
+				-1px 0px 1px #ffffff,
+				0px -1px 1px #ffffff,
+				0px 1px 1px #ffffff,
+				1px 0px 1px #ffffff inset, 
+				-1px 0px 1px #ffffff inset,
+				0px -1px 1px #ffffff inset,
+				0px 1px 1px #ffffff inset;
+}
+
+.mini_icon_box input{
+	font-size:22px;
+	margin: 10px auto;
+	width:35px;
+	height: 35px;
+}
+.mini_icon_box .new_posting_icon{
+    margin-top:93px;
+}
+/*post의 포스트추가 아이콘*/
+.post_head .icon_area{
+	position: absolute; 
+	left:-0.3%;/*post의 끝자락에 맞추기 위해*/
+}
+.post_head .icon_area *{
+    font-size:20px;
+}
+
+.post_head .icon_area .new_posting_able_icon{
+position: absolute;
+	width:25px;
+	height: 25px;
+}
+/*메뉴의 포스트추가아이콘*/
+.division_menu .icon_area{
+	position: absolute; 
+	left:91.2%;/*메뉴의 끝자락에 맞추기 위해*/
+}
+.division_menu .icon_area *{
+    font-size:20px;
+}
+.division_menu .icon_area .new_posting_able_icon{
+	width:25px;
+	height: 25px;
+}
+
+
+.mini_icon_box .mode_change_icon{
+    position:absolute;
+	left:0px;
+	bottom: 150px;
+}
+.mini_icon_box .scroll_up_icon{
+    position:absolute;
+	left:0px;
+	bottom: 100px;
+}
+
+
+.mini_icon_box #page_down{
+    position:absolute;
+	left:0px;
+	bottom: 300px;
+}
+.mini_icon_box #page_number{
+    position:absolute;
+	left:0px;
+	bottom: 325px;
+	font-family:DigitalFont;
+}
+.mini_icon_box #page_up{
+    position:absolute;
+	left:0px;
+	bottom: 350px;
+}

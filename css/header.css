@@ -1,0 +1,95 @@
+
+header {
+position: fixed;
+left:0px;
+top:0px;
+right:0px;
+font-family:"Malgun Gothic";
+height: 50px;
+z-index:1;
+}
+header #header_nav{
+background:#ffffff;
+position: absolute;
+left:0px;
+top:0px;
+right:0px;
+height:35px;
+
+line-height:35px;
+
+border: 3px outset #ffc32d;
+border-top: 0px none;
+
+-webkit-border-radius:0px 0px 20px 20px;
+-moz-border-radius:0px 0px 20px 20px;
+border-radius:0px 0px 20px 20px;
+
+box-shadow: 2px 2px 2px rgba(0,0,0,.5);
+}
+header #header_nav #logo{
+cursor:pointer;
+position: absolute;
+display:inline;
+left:10px;
+top:1px; /*(헤더높이-이미지 높이)/2 = 수직 가운데정렬*/
+height:33px;
+}
+header #header_nav #profile{
+position: absolute;
+display:inline-block;
+top:0px;
+left:100px;
+height:30px;
+
+vertical-align: middle;
+
+cursor: pointer;
+}
+header #header_nav #profile img{
+position: relative;
+height:20px;
+width:20px;
+vertical-align: middle;
+
+}
+header #header_nav #profile #nick_name{
+position: relative;
+display:inline-block;
+left: 10px;
+padding-right:30px;
+}
+
+header #header_nav #profile meter{
+vertical-align: middle;
+height: 10px;
+width:50px;
+}
+
+
+header #header_nav #app {
+position: absolute;
+right: 10px;
+}
+
+header #alarm_field{
+display: block;
+position: absolute;
+top: 0%;
+padding-top: 30px;
+padding-bottom: 0px;
+
+left: 35%;
+width: 30%;
+
+border: 2px ridge #ffc32d;
+background: #ffc32d;
+
+text-align: center;
+}
+header #alarm_field #switch{
+display: block;
+position: relative;
+bottom:0px;
+height: 13px;
+}

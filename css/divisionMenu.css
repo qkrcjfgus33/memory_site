@@ -1,0 +1,42 @@
+#division_menu_area {
+display: block;
+position: fixed;
+top: 0%;
+left: 0%;
+height: 100%;
+width: 10%;
+}
+#division_menu_area .division_menu{
+display: block;
+position: relative;
+margin: 50px 0px;
+height: 40px;
+line-height: 40px;
+width: 90%;
+border-left: 0px none;
+background: rgba(255,255,255,.9);
+text-align: right;
+padding-right: 10%;
+left: -100%;
+border: 2px solid #ffc32d;
+box-shadow: 1px 1px 1px #ffe08e, 
+			1px 1px 1px #ffe08e inset,
+			-1px -1px 1px #ffe08e,
+			-1px -1px 1px #ffe08e inset;
+
+
+text-overflow:ellipsis;
+font-family:"Malgun Gothic";
+
+}
+#division_menu_area .division_menu:first-child{
+margin-top: 200px;
+}
+#division_menu_area .chose{
+	left:0%;
+	box-shadow:-1px 1px 1px #ffe08e, 1px 0px 1px #ffe08e inset,-1px -1px 1px #ffe08e,15px 0px 15px rgba(255,255,255,0.9); 
+	border-right:0px;
+}
+#division_menu_area .post_chose{
+	background-color: rgb(225,221,67);
+}

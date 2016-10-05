@@ -1,0 +1,54 @@
+#post_add{
+background: rgba(255,255,255,1);
+z-index:1;
+}
+
+#post_add ul{
+padding: 0px;
+}
+#post_add .incode_html{
+padding: 0px 10px;
+}
+
+#post_add .title {
+width: 100%;
+}
+#post_add .title textarea{
+position:relative;
+left: 5%;
+width: 90%;
+height: 18px;
+min-height: 18px;
+max-height: 100px;
+}
+#post_add .post_body .content{
+width:99%;
+height: 100px;
+min-height: 100px;
+max-height: 300px;
+padding: 5px;
+}
+#post_add iframe{
+
+white-space: pre-wrap; /* CSS3*/
+white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+white-space: -pre-wrap; /* Opera 4-6 */
+white-space: -o-pre-wrap; /* Opera 7 */
+word-wrap: break-all; /* Internet Explorer 5.5+ */ 
+
+background: #ffffff;
+border: 1px solid #bcbcbc;
+
+
+overflow-y:auto;
+}
+
+
+#post_add .post_body{
+display: block;
+width:95%;
+margin: auto;
+vertical-align: middle;
+}
+
+

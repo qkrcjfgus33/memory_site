@@ -1,0 +1,56 @@
+#category_menu {
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: 100% 50%;
+    display: inline-block;
+    position: fixed;
+    text-align: center;
+	
+	width: 10%;
+
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	
+}
+#category_menu a{
+display: block;
+text-decoration: none;
+
+font-family: "Malgun Gothic";
+font-weight: 900;
+color:#ffc32d;
+font-size: 15px;
+text-overflow:ellipsis;
+text-shadow: -1px 0 #ffffff, 0 1px #ffffff, 1px 0 #ffffff, 0 -1px #ffffff;
+			 -moz-text-shadow: -1px 0 #ffffff, 0 1px #ffffff, 1px 0 #ffffff, 0 -1px #ffffff;
+			 -webkit-text-shadow: -1px 0 #ffffff, 0 1px #ffffff, 1px 0 #ffffff, 0 -1px #ffffff;
+
+width:100px;
+width:100px;
+line-height: 100px;
+margin: 20px auto;
+
+
+
+background: rgb(255,255,255);
+opacity: 0.6;
+border: double 5px rgb(255,195,45);
+box-shadow: 1px 0px 3px #ffffff, 
+			-1px 0px 3px #ffffff,
+			0px -1px 3px #ffffff,
+			0px 1px 3px #ffffff,
+			1px 0px 3px #ffffff inset, 
+			-1px 0px 3px #ffffff inset,
+			0px -1px 3px #ffffff inset,
+			0px 1px 3px #ffffff inset;
+
+
+-webkit-border-radius:2000px;
+-moz-border-radius:2000px;
+border-radius:2000px;
+}
+
+#category_menu a:first-child{
+margin-top: 60px;
+}
